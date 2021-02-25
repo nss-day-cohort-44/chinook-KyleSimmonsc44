@@ -1,5 +1,6 @@
 SELECT SUM(total),
     strftime("%Y", InvoiceDate) as year
 FROM Invoice
-WHERE year BETWEEN "2009" AND "2011"
+WHERE year = "2009"
+OR year = "2011"
 GROUP BY year
