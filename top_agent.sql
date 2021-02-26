@@ -3,9 +3,8 @@ SELECT
     EmployeeName
 From(
     SELECT
-        "$" || printf("%2f", sum(i.total)) as TotalSales,
-        e.FirstName || ' ' || e.LastName as EmployeeName,
-        strftime('%Y', i.InvoiceDate) as InvoiceYear
+        "$" || printf("%.2f", sum(i.total)) as TotalSales,
+        e.FirstName || ' ' || e.LastName as EmployeeName
     From
         Invoice i,
         Employee e,
@@ -14,6 +13,5 @@ From(
         i.customerId=c.customerId
         AND c.SupportRepId=e.EmployeeId
     group by
-        employeeName,
-        InvoiceYear
+        employeeName
 ) as Sales
